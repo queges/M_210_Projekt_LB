@@ -102,3 +102,40 @@
 - Kritischer Review des Projekts: Welche Ziele wurden erreicht, welche nicht? Gab es technische Herausforderungen, die gelöst werden mussten?
 - Überprüfung des Codes auf Sauberkeit, Struktur und Funktionalität, um sicherzustellen, dass alle Anforderungen erfüllt sind.
 
+- Einrichtung von Git Actions für einfache CI/CD-Pipelines (z.B. automatische Tests bei jedem Push).
+- Sicherstellen, dass der Merge Request korrekt dokumentiert wird (mit Commit-Beschreibungen und Änderungsnotizen).
+
+# Tatsächliche Arbeitszeit
+
+## Vorarbeiten (8:00 – 10:00)
+
+### Github Repository erstellen (8:00 – 8:30)
+
+### Supabase-Projekt einrichten und Datenbanken erstellen (8:30 – 9:30)
+
+### Git Merge Request und Git Actions (9:30 – 10:00)
+
+## Eingehalten
+
+
+## App mit allen Kriterien erstellen (10:30 – 12:00 / 13:00 – 16:00)
+
+### Benutzerauthentifizierung mit Supabase (10:30 – 11:30)
+
+### CRUD-Operationen für Module (11:30 – 12:00)
+
+### CRUD-Operationen für Noten (13:00 – 16:00)
+
+## Konnte ich nicht Eingehalten
+
+## Dokumentation / Review (16:00 – 17:00)
+
+### Dokumentation der Architektur und Implementierung (15:00 – 16:00)
+
+### Deployment-Optionen und abschließender Review (16:00 – 17:00)
+
+## Konnte ich nich Einhalten
+
+# Kritischer review: 
+
+### Ich hatte sehr viele Probleme und konnte deshalb nicht alle CRUD-Operationen erstellen. Und ich habe auch somit nicht alle User-Stories erfüllt

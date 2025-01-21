@@ -19,6 +19,9 @@ function App() {
   const [session, setSession] = useState(null); // Zustand für die Session
   const [moduleName, setModuleName] = useState("");
   const [moduleDescription, setModuleDescription] = useState("");
+  const [note, setNote] = useState("");
+  const [module, setModule] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     const {
@@ -57,6 +60,29 @@ async function getGrades() {
     setGrades(data);
   }
 }
+
+async function createModule() {
+  const { error } = await supabase.from("Modul").insert([
+    { bezeichnung: moduleName, beschreibung: moduleDescription },
+  ]);
+  if (error) {
+    console.error("Fehler beim Erstellen des Moduls:", error);
+  } else {
+    getModules();
+  }
+}
+
+async function createGrade() {
+  const { error } = await supabase.from("Note").insert([
+    { modul: module, grade: note },
+  ]);
+  if (error) {
+    console.error("Fehler beim Erstellen der Note:", error);
+  } else {
+    getGrades();
+  }
+}
+
   async function logoutUser() {
     await supabase.auth.signOut();
     setUser(null);
@@ -71,6 +97,15 @@ async function getGrades() {
         theme="dark"
       />
     );
+  }
+
+  async function deleteGrade() {
+    const { error } = await supabase.from("Note").delete().eq("id", id);
+    if (error) {
+      console.error("Fehler beim Löschen der Note:", error);
+    } else {
+      getGrades();
+    }
   }
 
 return (
@@ -110,14 +145,43 @@ return (
             <div style={{ flex: "1" }}>
               <strong style={{ fontSize: "16px", color: "#333" }}>{Note.grade}</strong>
             </div>
+            <button onClick={() => deleteGrade()} >Delete</button>
           </div>
-          
         </li>
       ))}
     </ul>
+            <input type="text" placeholder="Modulname" value={moduleName} onChange={(e) => setModuleName(e.target.value)} />
+            <input type="text" placeholder="Modulbeschreibung" value={moduleDescription} onChange={(e) => setModuleDescription(e.target.value)} />
+            <button 
+              onClick={createModule} 
+              style={{
+                padding: "10px 20px",
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Erstellen
+            </button>
+            <input type="number" placeholder="Note" value={note} onChange={(e) => setNote(e.target.value)} />
+            <input type="dropdown" placeholder="Modul" value={module} onChange={(e) => setModule(e.target.value)} options={modules.map((module) => module.bezeichnung)} />
+            <button 
+              onClick={createGrade} 
+              style={{ 
+                padding: "10px 20px", 
+                backgroundColor: "#28a745", 
+                color: "white", 
+                border: "none", 
+                borderRadius: "5px", 
+                cursor: "pointer" }}>
+                  Erstellen
+                </button>
   </div>
 );
 }
+
 
 export default App;
 
