@@ -73,24 +73,50 @@ async function getGrades() {
     );
   }
 
-  return (
-    <div>
-      <h1>Willkommen, {user.email}!</h1>
-          <button onClick={logoutUser}>Abmelden</button>
+return (
+  <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+    <h1>Willkommen, {user.email}!</h1>
+    <button 
+      onClick={logoutUser} 
+      style={{
+        padding: "10px 20px",
+        backgroundColor: "#ff4d4d",
+        color: "white",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+      }}
+    >
+      Abmelden
+    </button>
 
-          <h2>Modulübersicht</h2>
-          <ul>
-            {modules.map((Modul) => (
-              <li key={Modul.id}>
-                <strong>{Modul.bezeichnung}</strong>
-                <p>{Modul.beschreibung}</p>
-                <p>{Modul.Note_id}</p>
-              </li>
-            ))}
-          </ul>
-    </div>
-    
-  );
+    <h2 style={{ marginTop: "30px" }}>Modulübersicht</h2>
+    <ul style={{ listStyle: "none", padding: "0" }}>
+      {grades.map((Note) => (
+        <li 
+          key={Note.id} 
+          style={{
+            border: "1px solid #ddd",
+            borderRadius: "5px",
+            marginBottom: "20px",
+            padding: "15px",
+            backgroundColor: "#f9f9f9",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ flex: "1", marginRight: "20px" }}>
+              <strong style={{ fontSize: "18px", color: "#333" }}>{Note.modul}</strong>
+            </div>
+            <div style={{ flex: "1" }}>
+              <strong style={{ fontSize: "16px", color: "#333" }}>{Note.grade}</strong>
+            </div>
+          </div>
+          
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 }
 
 export default App;
