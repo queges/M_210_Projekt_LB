@@ -47,6 +47,6 @@
 
 ### Note
 - `id` (UUID, Primärschlüssel)
-- `grade` (int) – Note des Moduls (z.B. 1 bis 5)
+- `grade` (int) – Note des Moduls (1 bis 6)
 - `weight` (int) – Gewichtung der Note (z.B. 30 für 30%)
 - `modulId` (UUID, Fremdschlüssel → `Modul.id`) – Verknüpfung zum Modul, zu dem die Note gehört
