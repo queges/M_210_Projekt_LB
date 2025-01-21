@@ -37,20 +37,19 @@ function App() {
 
   // Funktion zum Abrufen der Module
 async function getModules() {
-  const { data, error } = await supabase.from("modules").select();
+  const { data, error } = await supabase.from("Modul").select("*");
   if (error) {
-    console.error("Fehler beim Abrufen der Module:", error);
+    console.log("Fehler beim Abrufen der Module:", error);
   } else {
     setModules(data);
   }
 }
   
   // Funktion zum Abrufen der Noten
-async function getGrades(modulId) {
+async function getGrades() {
   const { data, error } = await supabase
-    .from("notes")
-    .select()
-    .eq("modulId", modulId);  // Filter für Noten, die zu einem Modul gehören
+    .from("Note")
+    .select("*")
 
   if (error) {
     console.error("Fehler beim Abrufen der Noten:", error);
@@ -81,19 +80,11 @@ async function getGrades(modulId) {
 
           <h2>Modulübersicht</h2>
           <ul>
-            {modules.map((modul) => (
-              <li key={modul.id}>
-                <strong>{modul.bezeichnung}</strong>
-                <p>{modul.beschreibung}</p>
-              </li>
-            ))}
-          </ul>
-
-          <h2>Notenübersicht</h2>
-          <ul>
-            {grades.map((grade) => (
-              <li key={grade.id}>
-                Modul ID: {grade.modulId} - Note: {grade.grade}
+            {modules.map((Modul) => (
+              <li key={Modul.id}>
+                <strong>{Modul.bezeichnung}</strong>
+                <p>{Modul.beschreibung}</p>
+                <p>{Modul.Note_id}</p>
               </li>
             ))}
           </ul>
