@@ -90,11 +90,6 @@
 - Logik für Notenoperationen implementieren (einschließlich Gewichtung und Berechnung des Notendurchschnitts).
 - Testen der CRUD-Funktionen für Noten und ihre Synchronisierung mit der Supabase-Datenbank.
 
-### Berechnung des Notendurchschnitts (14:00 – 14:30)
-- Implementierung der Berechnungslogik für den Notendurchschnitt basierend auf den Noten und deren Gewichtung.
-- Anzeige des berechneten Notendurchschnitts im Frontend.
-- Sicherstellen, dass der Durchschnitt nach jeder Notenänderung automatisch aktualisiert wird.
-
 ## Dokumentation / Review (15:00 – 17:00)
 
 ### Dokumentation der Architektur und Implementierung (15:00 – 16:00)
